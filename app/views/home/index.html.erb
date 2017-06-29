@@ -1,0 +1,70 @@
+<style>
+  textarea{
+    resize:none;
+    margin-bottom:20px;
+  }
+    #benner{
+      height: 200px;
+      width:100%;
+      margin-top: 30px;
+    }
+    #cre{
+      margin-left: 94.5%;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  .atag {
+    display: block;
+    position: relative;
+    z-index: 1;
+    padding: 2em;
+    margin: -2em;
+    color: darkblue;
+    text-decoration: none;
+  }
+    a:hover{
+      text-decoration: none;
+    }
+    /*.eclipes{*/
+      /*width: 200px;*/
+      /*white-space:nowrap;*/
+      /*overflow:hidden;*/
+      /*text-overflow:ellipsis;*/
+
+    /*}*/
+</style>
+<div class ='container'>
+
+
+  <img id="benner" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxVI3bKqyHronrexQBS4zt-DDIuBvPgVYCCokd-7BlHfIs5NPx">
+
+  <button id="cre" type="button" class="btn btn-success" onclick="location.href='/home/create'";>글쓰기</button>
+  <%= paginate @posts %>
+  <table class="table table-hover">
+  <th class="col-md-5">
+    Title
+  </th>
+  <th class="col-md-5">
+    Contents
+  </th>
+  <th class="col-md-2">
+    Edit
+  </th>
+  <% @posts.each do |post|%>
+      <tr class="warning">
+        <td class="col-md-5">
+          <a class="atag" href = '/home/read/<%=post.id%>'><%=post.title%></a>
+        </td>
+        <td class="col-md-5">
+          <a class="atag" href = '/home/read/<%=post.id%>'><%=post.content%></a>
+        </td>
+        <td class="col-md-2">
+          <% if post.user == current_user %>
+              <button type="button" class="btn btn-warning" onclick="location.href='/home/update/<%=post.id%>'";>수정</button>
+              <button type="button" class="btn btn-danger" onclick="location.href='/home/destroy/<%=post.id%>'";>삭제</button>
+          <% end %>
+        </td>
+      </tr>
+  <%end%>
+</table>
+</div>

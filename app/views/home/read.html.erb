@@ -1,0 +1,44 @@
+
+<style>
+  .read{
+    margin-top: 100px;
+  }
+    .kuboon{
+      font-size: 20px;
+    }
+    .kuboon button{
+    }
+</style>
+<div class="container read">
+  <div class="jumbotron">
+    <h1><%= @post.title%></h1>
+    <hr>
+    <p><%= @post.content%></p>
+    <img src="<%=@post.img_url%>">
+    <hr>
+    <button type="button" class="btn btn-warning" onclick="location.href='/'";>목록으로</button>
+  </div>
+
+  <div class="jumbotron">
+    <table class="table">
+      <th><h2>comments</h2></th>
+    <% @post.comments.each do |c| %>
+        <tr class = 'kuboon'>
+          <td claas="col-md-11"><%=c.comment%></td>
+          <td class="col-md-1">
+            <% if c.user == current_user %>
+              <button type="button" class="btn btn-danger" onclick="location.href='/home/read/<%=c.id%>/comment_destroy'";>삭제하기</button>
+            <%end%>
+          </td>
+        </tr>
+    <% end %>
+    </table>
+    <form method= "get" action = "/home/read/<%= @post.id%>/comment_create">
+      <div class="form-group">
+        <label for="comment">댓글 작성</label>
+        <input type="text" class="form-control" id="comment" name = "comment" placeholder="comment">
+      </div>
+      <button type="submit" class="btn btn-success">작성</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<style>
+  .jumbotron{
+    margin-top: 100px;
+  }
+</style>
+<div class ='container'>
+  <div class="jumbotron">
+  <h1>글쓰기</h1>
+    <hr>
+  <form method="post" action = "/home/real_create" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" name = "title" placeholder="title">
+    </div>
+    <div class="from-group">
+      <label >내용</label>
+      <textarea name = 'content' id = 'content' class = 'form-control' rows="6"></textarea>
+    </div>
+    <hr>
+    <div class="form-group">
+      <label for="exampleInputFil">사진 추가</label>
+      <input type="file" name="img" id="exampleInputFile">
+    </div>
+    <hr>
+    <button type="submit" class="btn btn-success">작성완료</button>
+    <button type="button" class="btn btn-warning" onclick="location.href='/'";>목록으로</button>
+  </form>
+  </div>
+</div>
